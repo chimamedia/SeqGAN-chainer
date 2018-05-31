@@ -1,0 +1,147 @@
+================================================================================
+Input tree: '.\\oracle_test'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file '.\\oracle_test\\run_sequence_gan.py'
+ outputting to 'oracle_v1\\run_sequence_gan.py'
+--------------------------------------------------------------------------------
+
+'.\\oracle_test\\run_sequence_gan.py' Line 176
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.scalar_summary' to 'tf.summary.scalar'
+
+    Old: dis_loss_summary = tf.scalar_summary('dis_loss', loss_)
+                            ~~~~~~~~~~~~~~~~~                    
+    New: dis_loss_summary = tf.summary.scalar('dis_loss', loss_)
+                            ~~~~~~~~~~~~~~~~~                    
+
+'.\\oracle_test\\run_sequence_gan.py' Line 177
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.scalar_summary' to 'tf.summary.scalar'
+
+    Old: dis_acc_summary = tf.scalar_summary('dis_acc', loss_)
+                           ~~~~~~~~~~~~~~~~~                   
+    New: dis_acc_summary = tf.summary.scalar('dis_acc', loss_)
+                           ~~~~~~~~~~~~~~~~~                   
+
+'.\\oracle_test\\run_sequence_gan.py' Line 175
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.scalar_summary' to 'tf.summary.scalar'
+
+    Old: target_loss_summary = tf.scalar_summary('target_loss', loss_)
+                               ~~~~~~~~~~~~~~~~~                       
+    New: target_loss_summary = tf.summary.scalar('target_loss', loss_)
+                               ~~~~~~~~~~~~~~~~~                       
+
+'.\\oracle_test\\run_sequence_gan.py' Line 179
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.train.SummaryWriter' to 'tf.summary.FileWriter'
+
+    Old: summary_writer = tf.train.SummaryWriter(summary_dir, sess.graph)
+                          ~~~~~~~~~~~~~~~~~~~~~~                          
+    New: summary_writer = tf.summary.FileWriter(summary_dir, sess.graph)
+                          ~~~~~~~~~~~~~~~~~~~~~                          
+
+'.\\oracle_test\\run_sequence_gan.py' Line 167
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.initialize_all_variables' to 'tf.global_variables_initializer'
+
+    Old: sess.run(tf.initialize_all_variables())
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~    
+    New: sess.run(tf.global_variables_initializer())
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
+
+
+--------------------------------------------------------------------------------
+Processing file '.\\oracle_test\\utils_oracle.py'
+ outputting to 'oracle_v1\\utils_oracle.py'
+--------------------------------------------------------------------------------
+
+'.\\oracle_test\\utils_oracle.py' Line 33
+--------------------------------------------------------------------------------
+
+Added keyword 'axis' to reordered function 'tf.split'
+Added keyword 'num_or_size_splits' to reordered function 'tf.split'
+Added keyword 'value' to reordered function 'tf.split'
+
+    Old:             inputs = tf.split(1, self.sequence_length, tf.nn.embedding_lookup(self.g_embeddings, self.x))
+                                                                                                                   
+    New:             inputs = tf.split(axis=1, num_or_size_splits=self.sequence_length, value=tf.nn.embedding_lookup(self.g_embeddings, self.x))
+                                       ~~~~~   ~~~~~~~~~~~~~~~~~~~                      ~~~~~~                                                   
+
+'.\\oracle_test\\utils_oracle.py' Line 34
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.pack' to 'tf.stack'
+
+    Old:             self.processed_x = tf.pack(
+                                        ~~~~~~~  
+    New:             self.processed_x = tf.stack(
+                                        ~~~~~~~~  
+
+'.\\oracle_test\\utils_oracle.py' Line 52
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.mul' to 'tf.multiply'
+
+    Old:             gen_o = gen_o.write(i, tf.reduce_sum(tf.mul(tf.one_hot(next_token, self.num_emb, 1.0, 0.0),
+                                                          ~~~~~~                                                 
+    New:             gen_o = gen_o.write(i, tf.reduce_sum(tf.multiply(tf.one_hot(next_token, self.num_emb, 1.0, 0.0),
+                                                          ~~~~~~~~~~~                                                 
+
+'.\\oracle_test\\utils_oracle.py' Line 38
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.pack' to 'tf.stack'
+
+    Old:         self.h0 = tf.pack([self.h0, self.h0])
+                           ~~~~~~~                     
+    New:         self.h0 = tf.stack([self.h0, self.h0])
+                           ~~~~~~~~                     
+
+'.\\oracle_test\\utils_oracle.py' Line 97
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.scalar_summary' to 'tf.summary.scalar'
+
+    Old:         self.pretrain_summary = tf.scalar_summary('test_loss', self.pretrain_loss)
+                                         ~~~~~~~~~~~~~~~~~                                  
+    New:         self.pretrain_summary = tf.summary.scalar('test_loss', self.pretrain_loss)
+                                         ~~~~~~~~~~~~~~~~~                                  
+
+'.\\oracle_test\\utils_oracle.py' Line 183
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.unpack' to 'tf.unstack'
+
+    Old:             hidden_state, c_prev = tf.unpack(hidden_memory_tuple)
+                                            ~~~~~~~~~                      
+    New:             hidden_state, c_prev = tf.unstack(hidden_memory_tuple)
+                                            ~~~~~~~~~~                      
+
+'.\\oracle_test\\utils_oracle.py' Line 141
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.unpack' to 'tf.unstack'
+
+    Old:             previous_hidden_state, c_prev = tf.unpack(hidden_memory_tm1)
+                                                     ~~~~~~~~~                    
+    New:             previous_hidden_state, c_prev = tf.unstack(hidden_memory_tm1)
+                                                     ~~~~~~~~~~                    
+
+'.\\oracle_test\\utils_oracle.py' Line 173
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.pack' to 'tf.stack'
+
+    Old:             return tf.pack([current_hidden_state, c])
+                            ~~~~~~~                            
+    New:             return tf.stack([current_hidden_state, c])
+                            ~~~~~~~~                            
+
+
