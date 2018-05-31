@@ -5,9 +5,9 @@
 
 ## requirements
 
-- Python > 3.4
-- Chainer > 1.5
-- Tensorflow (CPU-only)
+- Python 3.6
+- Chainer 4.1.0
+- Tensorflow (CPU-only) 1.8.0
 ```
 # Ubuntu/Linux 64-bit Python 3.4
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.11.0-cp34-cp34m-linux_x86_64.whl
@@ -24,7 +24,11 @@ pip install $TF_BINARY_URL
 ## Usage
 
 ```
+# tensorflow < 1
 cd oracle_test && python run_sequence_gan.py 
+
+#tendorflow >= 1
+cd oracle_v1 && python run_sequence_gan.py 
 ```
 
 
