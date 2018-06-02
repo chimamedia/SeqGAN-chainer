@@ -245,7 +245,8 @@ if not args.dis:
             try:
                 x_batch, y_batch = zip(*batch)
                 loss, acc = discriminator(x_batch, y_batch, dis_dropout_keep_prob)
-                dis_optimizer.zero_grads()
+                # dis_optimizer.zero_grads()
+                dis_optimizer.reallocate_cleared_grads()
                 loss.backward()
                 dis_optimizer.update()
                 sum_train_loss.append(float(loss.data))
@@ -280,7 +281,8 @@ for epoch in range(1, total_epoch):
         rewards = rollout_generator.get_rewards(samples, discriminator, rollout_num=16, pool=pool, gpu=args.gpu)
         print(rewards[:30])
         loss = generator.reinforcement_step(samples, rewards, g_steps=g_steps, random_input=True)
-        gen_optimizer.zero_grads()
+        # gen_optimizer.zero_grads()
+        gen_optimizer.reallocate_cleared_grads()
         loss.backward()
         gen_optimizer.update()
         print(' Reinforce step {}/{}'.format(step+1, g_steps))
@@ -309,7 +311,8 @@ for epoch in range(1, total_epoch):
                 if flag:
                     print(float(acc.data))
                     flag=False
-                dis_optimizer.zero_grads()
+                # dis_optimizer.zero_grads()
+                dis_optimizer.reallocate_cleared_grads()
                 loss.backward()
                 dis_optimizer.update()
                 sum_train_loss.append(float(loss.data))
