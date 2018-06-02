@@ -37,7 +37,7 @@ class TextCNN(chainer.Chain):
 
         super(TextCNN, self).__init__(**layers)
 
-    def forward(self, x_input, ratio=0.5, train=True):
+    def forward(self, x_input, ratio=0.5):
 
         try:
             batch_size, seq_length = x_input.shape
@@ -60,17 +60,17 @@ class TextCNN(chainer.Chain):
         # highway network
         t = F.sigmoid(self.highway_gate(h3))
         h4 = t * F.relu(self.highway_out(h3)) + (1 - t) * h3
-        h5 = F.dropout(h4, ratio=ratio,  train=train)
+        h5 = F.dropout(h4, ratio=ratio)
 
         return self.out(h5)
 
     def get_reward(self, x_input):
-        pred = F.softmax(self.forward(x_input, train=False)).data
+        pred = F.softmax(self.forward(x_input)).data
         return np.array([float(item[1]) for item in pred])
 
-    def __call__(self, x_input, t, dis_dropout_keep_prob=0.5, train=True):
+    def __call__(self, x_input, t, dis_dropout_keep_prob=0.5):
 
-        y = self.forward(x_input, ratio=1-dis_dropout_keep_prob, train=train)
+        y = self.forward(x_input, ratio=1-dis_dropout_keep_prob)
         t = chainer.Variable(self.xp.asarray(t, 'int32'))
 
         return F.softmax_cross_entropy(y, t), F.accuracy(y, t)

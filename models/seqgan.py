@@ -92,17 +92,17 @@ class SeqGAN(chainer.Chain):
 
     def set_state(self):
         if hasattr(self, "lstm1"):
-            self.lstm1.set_state(chainer.Variable(self.state['c1'].data.copy(), volatile=True),
-                                 chainer.Variable(self.state['h1'].data.copy(), volatile=True))
+            self.lstm1.set_state(chainer.Variable(self.state['c1'].data.copy()),
+                                 chainer.Variable(self.state['h1'].data.copy()))
         if hasattr(self, "lstm2"):
-            self.lstm2.set_state(chainer.Variable(self.state['c2'].data.copy(), volatile=True),
-                                 chainer.Variable(self.state['h2'].data.copy(), volatile=True))
+            self.lstm2.set_state(chainer.Variable(self.state['c2'].data.copy()),
+                                 chainer.Variable(self.state['h2'].data.copy()))
         if hasattr(self, "lstm3"):
-            self.lstm3.set_state(chainer.Variable(self.state['c3'].data.copy(), volatile=True),
-                                 chainer.Variable(self.state['h3'].data.copy(), volatile=True))
+            self.lstm3.set_state(chainer.Variable(self.state['c3'].data.copy()),
+                                 chainer.Variable(self.state['h3'].data.copy()))
         if hasattr(self, "lstm4"):
-            self.lstm4.set_state(chainer.Variable(self.state['c4'].data.copy(), volatile=True),
-                                 chainer.Variable(self.state['h4'].data.copy(), volatile=True))
+            self.lstm4.set_state(chainer.Variable(self.state['c4'].data.copy()),
+                                 chainer.Variable(self.state['h4'].data.copy()))
 
     def decode_one_step(self, x, train=True, z=None):
         if self.dropout:
